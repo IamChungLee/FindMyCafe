@@ -11,16 +11,7 @@ h2{
   font-family: 'Style Script', cursive;
 }
 
-#landing{
-    margin: 50px 0 0 0;
-    text-align: center;
-    padding: 200px 50px 200px 50px;
-    background: url("https://images.unsplash.com/photo-1565650839149-2c48a094196c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1047&q=80");
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;
-    color: white;
-}
+/*------------------------HEADER AND FOOTER-------------------------------*/
 
 .navbar-brand{
     font-size: 2em;
@@ -35,6 +26,24 @@ h2{
     background: beige;
     text-align: center;
 }
+
+
+/*------------------------home.html----------------------------------------*/
+
+#landing{
+    margin: 50px 0 0 0;
+    text-align: center;
+    padding: 200px 50px 200px 50px;
+    background: url("https://images.unsplash.com/photo-1565650839149-2c48a094196c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1047&q=80");
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+    color: white;
+}
+
+
+
+/*------------------------all.html----------------------------------------*/
 
 .all-cafe-heading{
     text-align:center;
@@ -64,6 +73,20 @@ h2{
     background:url('https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80');
 }
 
+/*------------------------cafe.html----------------------------------------*/
 
+.cafe-page{
+    background: beige;
 
+}
+
+.cafe-map{
+    border-top: solid 2px black;
+    margin: 75px auto;
+}
+
+.cafe-details{
+    margin: 50px 50px 0 50px;
+
+}
 
