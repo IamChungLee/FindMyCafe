@@ -1,0 +1,40 @@
+{% include "header.html" %}
+
+<section class="all-cafes">
+    <div class="all-cafe-heading">
+        <h1>Visit these Cafes in New York</h1>
+    </div>
+    {% for cafe in cafes %}
+        <div class="featured-cafes">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="{{ url_for('page', cafe_id=cafe.id) }}"><h2>{{ cafe.name }}</h2></a>
+                    <h3>{{ cafe.location }}</h3>
+
+                    {% if cafe.has_sockets == True %}
+                        <p>Electrical Outlets</p>
+                    {% endif %}
+                    {% if cafe.has_toilet == True %}
+                        <p>Restrooms</p>
+                    {% endif %}
+                    {% if cafe.has_wifi == True %}
+                        <p>Wifi</p>
+                    {% endif %}
+                    {% if cafe.can_take_calls == True %}
+                        <p>Calls Friendly</p>
+                    {% endif %}
+                    <p>Seats: {{ cafe.seats}}</p>
+                    <p>Coffee Price: {{ cafe.coffee_price }}</p>
+                </div>
+                <div class="col-lg-6 cafe-dt">
+                    <img class="cafe-img" src="{{ cafe.img_url }}" alt="">
+                </div>
+
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+</section>
+{% include "footer.html" %}
