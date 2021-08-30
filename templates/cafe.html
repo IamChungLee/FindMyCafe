@@ -1,34 +1,50 @@
 {% include "header.html" %}
 <div class="cafe-page">
     <div class="cafe-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1242.6847271030433!2d-0.06847026546612145!3d51.46973245657083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603a1059f6a35%3A0x85d77de55824c0ab!2sSocial!5e0!3m2!1sen!2sus!4v1630097772965!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="{{ cafe.map_url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
     </div>
 
-    <div class="row cafe-details">
-
+    <section class="row cafe-details">
         <div class="col-lg-6">
             <h1>{{ cafe.name }}</h1>
             <h3>{{ cafe.location }}</h3>
-
-                    {% if cafe.has_sockets == True %}
-                        <p>Electrical Outlets</p>
-                    {% endif %}
-                    {% if cafe.has_toilet == True %}
-                        <p>Restrooms</p>
-                    {% endif %}
-                    {% if cafe.has_wifi == True %}
-                        <p>Wifi</p>
-                    {% endif %}
-                    {% if cafe.can_take_calls == True %}
-                        <p>Calls Friendly</p>
-                    {% endif %}
-                    <p>Seats: {{ cafe.seats}}</p>
-                    <p>Coffee Price: {{ cafe.coffee_price }}</p>
+            {% if cafe.has_sockets == True %}
+                <p>Electrical Outlets</p>
+            {% endif %}
+            {% if cafe.has_toilet == True %}
+                <p>Restrooms</p>
+            {% endif %}
+            {% if cafe.has_wifi == True %}
+                <p>Wifi</p>
+            {% endif %}
+            {% if cafe.can_take_calls == True %}
+                <p>Calls Friendly</p>
+            {% endif %}
+            <p>Seats: {{ cafe.seats}}</p>
+            <p>Coffee Price: {{ cafe.coffee_price }}</p>
         </div>
         <div class="col-lg-6">
             <img class="cafe-page-head" src="{{ cafe.img_url }}" width="100%" height="100%" alt="">
         </div>
-    </div>
+    </section>
+    <section class="row cafe-reviews">
+        <div class="col-lg-6">
+            <h3>Hours</h3>
+            <p>Monday: 8:00AM - 5:00PM</p>
+            <p>Tuesday: 8:00AM - 5:00PM</p>
+            <p>Wednesday: 8:00AM - 5:00PM</p>
+            <p>Thursday: 8:00AM - 5:00PM</p>
+            <p>Friday: 8:00AM - 5:00PM</p>
+        </div>
+        <div>
+            <h3>Reviews</h3>
+            <p>!@#$</p>
+            <p>!@#$</p>
+            <p>!@#$</p>
+        </div>
+    </section>
+
 </div>
 
 {% include "footer.html" %}
