@@ -1,5 +1,14 @@
 {% include "header.html" %}
 
+{% import "bootstrap/wtf.html" as wtf %}
 
+<div class="find-cafe">
+    <section class="find-cafe-header">
+        <h1>Find Cafes with filters!</h1>
+    </section>
+    <section class="display-filtered">
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
 
+    </section>
+</div>
 {% include "footer.html" %}

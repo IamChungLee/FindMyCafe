@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, BooleanField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 
@@ -25,6 +29,15 @@ class Cafe(db.Model):
 
 # db.create_all()
 
+class FilterForm(FlaskForm):
+    location = StringField("Location")
+    toilet = BooleanField("Toilets")
+    wifi = BooleanField("Wifi")
+    sockets = BooleanField("Sockets")
+    calls = BooleanField("Calls")
+    submit = SubmitField("Filter")
+
+
 #HOME
 @app.route("/")
 def home():
@@ -45,7 +58,9 @@ def page(cafe_id):
 
 @app.route('/find')
 def find_cafe():
-    return render_template("find.html")
+    form = FilterForm
+    cafes = []
+    return render_template("find.html", form=form)
 
 
 

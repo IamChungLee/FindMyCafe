@@ -94,4 +94,16 @@ h2{
     margin: 100px 50px 50px 50px;
 }
 
+/*-------------------find.html----------------------*/
+
+.find-cafe{
+    background: url("https://images.unsplash.com/photo-1487266659293-c4762f375955?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+}
+
+.find-cafe-header{
+    margin: 75px auto;
+    text-align:center;
+    padding: 100px;
+
+}
 
