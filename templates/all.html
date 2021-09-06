@@ -1,9 +1,20 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
 {% include "header.html" %}
 
 <section class="all-cafes">
     <div class="all-cafe-heading">
         <h1>Visit these Cafes in New York</h1>
     </div>
+<!------------------------------Filter------------------------------>
+    <div class="filter-form" style="width: 25%">
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+    </div>
+
+    <!------------------------------Display cafes------------------------------>
+
     {% for cafe in cafes %}
         <div class="featured-cafes">
             <div class="row">
@@ -18,7 +29,7 @@
                         <p>Restrooms</p>
                     {% endif %}
                     {% if cafe.has_wifi == True %}
-                        <p>Wifi</p>
+                        <p>Wifi </p>
                     {% endif %}
                     {% if cafe.can_take_calls == True %}
                         <p>Calls Friendly</p>
@@ -29,7 +40,6 @@
                 <div class="col-lg-6 cafe-dt">
                     <img class="cafe-img" src="{{ cafe.img_url }}" alt="">
                 </div>
-
             </div>
         </div>
 
@@ -38,3 +48,4 @@
 
 </section>
 {% include "footer.html" %}
+{% endblock %}

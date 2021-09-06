@@ -6,6 +6,8 @@ from wtforms import StringField, SubmitField, BooleanField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'abc123'
+Bootstrap(app)
 
 #connect to database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
@@ -44,10 +46,28 @@ def home():
     return render_template("index.html", )
 
 #html route to show all cafes in db
-@app.route('/all')
+@app.route('/all', methods=['GET','POST'])
 def all_cafes():
-    cafe_list= db.session.query(Cafe).all()
-    return render_template("all.html", cafes=cafe_list)
+    form = FilterForm()
+    if form.validate_on_submit():
+        #Temporary brute filter till I think of better filter code
+        if form.validate_on_submit():
+            if form.location.data == "":
+                cafe_list = Cafe.query.filter_by(has_toilet=form.toilet.data,
+                                 has_wifi=form.wifi.data,
+                                 has_sockets=form.sockets.data,
+                                 can_take_calls=form.calls.data)
+                return render_template("all.html", cafes=cafe_list, form=form)
+            else:
+                cafe_list = Cafe.query.filter_by(location=form.location.data,
+                                     has_toilet=form.toilet.data,
+                                     has_wifi=form.wifi.data,
+                                     has_sockets=form.sockets.data,
+                                     can_take_calls=form.calls.data)
+                return render_template("all.html", cafes=cafe_list, form=form)
+    cafe_list = db.session.query(Cafe).all()
+    print(cafe_list)
+    return render_template("all.html", cafes=cafe_list, form=form)
 
 #cafe link
 @app.route('/page/<int:cafe_id>')
@@ -55,12 +75,6 @@ def page(cafe_id):
     cafe = Cafe.query.get(cafe_id)
     return render_template("cafe.html", cafe=cafe)
 
-
-@app.route('/find')
-def find_cafe():
-    form = FilterForm
-    cafes = []
-    return render_template("find.html", form=form)
 
 
 
