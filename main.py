@@ -31,6 +31,9 @@ class Cafe(db.Model):
 
 # db.create_all()
 
+#-------------------------------FORMS-------------------------------#
+
+#FILTER FORM
 class FilterForm(FlaskForm):
     location = StringField("Location")
     toilet = BooleanField("Toilets")
@@ -38,6 +41,22 @@ class FilterForm(FlaskForm):
     sockets = BooleanField("Sockets")
     calls = BooleanField("Calls")
     submit = SubmitField("Filter")
+
+
+#ADD CAFE FORM
+class CafeForm(FlaskForm):
+     cafe = StringField("Cafe Name", validators=[DataRequired()])
+     map_url = StringField("Map URL", validators=[DataRequired()])
+     img_url = StringField("IMG URL", validators=[DataRequired()])
+     location = StringField("Location", validators=[DataRequired()])
+     has_sockets = BooleanField("Does cafe have electric outlets?", validators=[DataRequired()])
+     has_toilets = BooleanField("Does cafe have toilets?", validators=[DataRequired()])
+     has_wifi = BooleanField("Does cafe have Wifi?", validators=[DataRequired()])
+     can_take_calls = BooleanField("Can you take calls here?", validators=[DataRequired()])
+     seats = StringField("How many seats does cafe have? (ex: 10-20, 20-30, 50+)", validators=[DataRequired()])
+     coffee_price = StringField("What is the price of a regular coffee here?", validators=[DataRequired()])
+     submit = SubmitField("Add Cafe")
+#-------------------------------ROUTES-------------------------------#
 
 
 #HOME
@@ -75,6 +94,17 @@ def page(cafe_id):
     cafe = Cafe.query.get(cafe_id)
     return render_template("cafe.html", cafe=cafe)
 
+
+#add a cafe using post method
+@app.route('/add', methods=['GET','POST'])
+def add_cafe():
+    form = CafeForm()
+    return render_template("add.html", form=form)
+
+
+@app.route('/edit/<int:cafe_id>', methods=['GET', 'POST'])
+def edit_cafe(cafe_id):
+    pass
 
 
 
