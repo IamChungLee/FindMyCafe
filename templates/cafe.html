@@ -37,10 +37,11 @@
             <p>Friday: 8:00AM - 5:00PM</p>
         </div>
         <div>
-            <h3>Reviews</h3>
-            <p>!@#$</p>
-            <p>!@#$</p>
-            <p>!@#$</p>
+            <button class="btn btn-dark btn-lg">
+                <a href="{{ url_for('edit_cafe', cafe_id=cafe.id) }}">
+                    Edit Cafe
+                </a>
+            </button>
         </div>
     </section>
 

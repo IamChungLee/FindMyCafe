@@ -4,7 +4,11 @@
 
 <div class="add-cafe">
     <div class="add-heading">
+        {% if is_edit: %}
+        <h1>Edit cafe</h1>
+        {% else: %}
         <h1>Add a cafe</h1>
+        {% endif %}
     </div>
     <div class="cafe-form" style="width: 50%">
         {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}

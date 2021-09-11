@@ -132,7 +132,33 @@ def add_cafe():
 #edit cafe route from individual cafe's page
 @app.route('/edit/<int:cafe_id>', methods=['GET', 'POST'])
 def edit_cafe(cafe_id):           
-    pass
+    cafe = Cafe.query.get(cafe_id)
+    edit_form = CafeForm(
+        cafe=cafe.name,
+        map_url=cafe.map_url,
+        img_url=cafe.img_url,
+        location=cafe.location,
+        has_sockets=cafe.has_sockets,
+        has_toilets=cafe.has_toilet,
+        has_wifi=cafe.has_wifi,
+        can_take_calls=cafe.can_take_calls,
+        seats=cafe.seats,
+        coffee_price=cafe.coffee_price
+    )
+    if edit_form.validate_on_submit():
+        cafe.name = edit_form.cafe.data
+        cafe.map_url = edit_form.map_url.data
+        cafe.img_url = edit_form.img_url.data
+        cafe.location = edit_form.location.data
+        cafe.has_sockets = edit_form.has_sockets.data
+        cafe.has_toilet = edit_form.has_toilets.data
+        cafe.has_wifi = edit_form.has_wifi.data
+        cafe.seats = edit_form.seats.data
+        cafe.coffee_price = edit_form.coffee_price.data
+        db.session.commit()
+        return redirect(url_for('page', cafe_id=cafe.id))
+    return render_template("add.html", form=edit_form, is_edit=True )
+
 
 
 
