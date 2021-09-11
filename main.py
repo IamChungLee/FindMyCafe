@@ -129,8 +129,9 @@ def add_cafe():
     return render_template("add.html", form=form)
 
 
+#edit cafe route from individual cafe's page
 @app.route('/edit/<int:cafe_id>', methods=['GET', 'POST'])
-def edit_cafe(cafe_id):
+def edit_cafe(cafe_id):           
     pass
 
 
