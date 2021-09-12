@@ -81,7 +81,10 @@ h2{
     background: url("https://images.unsplash.com/photo-1492541641671-bd75cf01a094?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80") no-repeat center fixed;
     padding-bottom: 50px;
     color:beige;
+}
 
+.cafe-page-head{
+    no-repeat center fixed
 }
 
 .cafe-map{
@@ -99,6 +102,10 @@ h2{
     font-size:1.3em;
 }
 
+.cafe-btn{
+    margin: 0px auto;
+    color:beige;
+}
 
 /*-------------------find filter----------------------*/
 

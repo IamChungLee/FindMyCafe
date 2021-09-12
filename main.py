@@ -50,10 +50,10 @@ class CafeForm(FlaskForm):
      map_url = StringField("Map URL (click the cafe's share link on google maps. Then click the embed button and copy and paste the html here)", validators=[DataRequired()])
      img_url = StringField("IMG URL", validators=[DataRequired()])
      location = StringField("Location", validators=[DataRequired()])
-     has_sockets = BooleanField("Does cafe have electric outlets?", validators=[DataRequired()])
-     has_toilets = BooleanField("Does cafe have toilets?", validators=[DataRequired()])
-     has_wifi = BooleanField("Does cafe have Wifi?", validators=[DataRequired()])
-     can_take_calls = BooleanField("Can you take calls here?", validators=[DataRequired()])
+     has_sockets = BooleanField("Does cafe have electric outlets?")
+     has_toilets = BooleanField("Does cafe have toilets?")
+     has_wifi = BooleanField("Does cafe have Wifi?")
+     can_take_calls = BooleanField("Can you take calls here?")
      seats = StringField("How many seats does cafe have? (ex: 10-20, 20-30, 50+)", validators=[DataRequired()])
      coffee_price = StringField("What is the price of a regular coffee here?", validators=[DataRequired()])
      submit = SubmitField("Add Cafe")
@@ -160,9 +160,12 @@ def edit_cafe(cafe_id):
     return render_template("add.html", form=edit_form, is_edit=True )
 
 
-
-
-
+@app.route('/delete/<int:cafe_id>', methods=['GET', 'POST'])
+def delete_cafe(cafe_id):
+    to_delete = Cafe.query.get(cafe_id)
+    db.session.delete(to_delete)
+    db.session.commit()
+    return redirect(url_for('all_cafes'))
 
 
 if __name__ == "__main__":

@@ -23,24 +23,31 @@
             <p>Seats: {{ cafe.seats}}</p>
             <p>Coffee Price: {{ cafe.coffee_price }}</p>
         </div>
-        <div class="col-lg-6">
-            <img class="cafe-page-head" src="{{ cafe.img_url }}" width="100%" height="100%" alt="">
+        <div class="col-lg-6 cafe-page-head">
+            <img  src="{{ cafe.img_url }}" width="100%" height="100%" alt="">
         </div>
     </section>
     <section class="row cafe-reviews">
         <div class="col-lg-6">
             <h3>Hours</h3>
-            <p>Monday: 8:00AM - 5:00PM</p>
-            <p>Tuesday: 8:00AM - 5:00PM</p>
-            <p>Wednesday: 8:00AM - 5:00PM</p>
-            <p>Thursday: 8:00AM - 5:00PM</p>
-            <p>Friday: 8:00AM - 5:00PM</p>
+            <p>Monday: 8:00AM - 7:00PM</p>
+            <p>Tuesday: 8:00AM - 7:00PM</p>
+            <p>Wednesday: 8:00AM - 7:00PM</p>
+            <p>Thursday: 8:00AM - 7:00PM</p>
+            <p>Friday: 8:00AM - 7:00PM</p>
+            <p>Saturday: 8:00AM - 5:00PM</p>
+            <p>Sunday: 8:00AM - 5:00PM</p>
+
+
         </div>
-        <div>
+        <div class="cafe-btn">
             <button class="btn btn-dark btn-lg">
                 <a href="{{ url_for('edit_cafe', cafe_id=cafe.id) }}">
                     Edit Cafe
                 </a>
+            </button>
+            <button class="btn btn-danger btn-lg">
+                <a href="{{ url_for('delete_cafe', cafe_id=cafe.id) }}">Delete cafe</a>
             </button>
         </div>
     </section>
