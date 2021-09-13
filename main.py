@@ -106,7 +106,6 @@ def add_cafe():
         #Parse the data to get the src to be saved into database which is then grab in the
         #cafe.html to display a map
         html = form.map_url.data
-        print(html)
         soup = bs4.BeautifulSoup(html, "html.parser")
         map_data = soup.iframe['src']
 
